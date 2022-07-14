@@ -1,0 +1,23 @@
+{
+  "name": "django_project_with_tailwind",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "gunicorn django_project.wsgi",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss -i ./style.css -o ./main/static/css/tailwind.css && cleancss -o ./main/static/css/tailwind.css ./main/static/css/tailwind.css",
+    "dev": "python manage.py runserver",
+    "mmg": "python manage.py makemigrations",
+    "mg": "python manage.py migrate",
+    "shell": "python manage.py shell",
+    "csu": "python manage.py createsuperuser"
+  },
+  "author": "Salis Mazaya",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "10.4.4",
+    "clean-css-cli": "^5.5.2",
+    "postcss": "8.4.12",
+    "tailwindcss": "2.2.19"
+  }
+}
