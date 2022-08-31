@@ -75,8 +75,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_project.wsgi.application'
+if DEBUG:
+    TEMPLATES[0]['OPTIONS']['context_processors'].append('main.context_processors.debug')
+else:
+    TEMPLATES[0]['OPTIONS']['context_processors'].append('main.context_processors.production')
 
+
+WSGI_APPLICATION = 'django_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
