@@ -7,3 +7,4 @@ package-lock.json
 db.sqlite3
 staticfiles
 .env.production
+\.venv

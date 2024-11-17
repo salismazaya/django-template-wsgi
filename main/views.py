@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.core.handlers.wsgi import WSGIRequest
+from django.http import HttpRequest
 
-def index(request: WSGIRequest):
+def index(request: HttpRequest):
     return render(request, 'main/index.html')
