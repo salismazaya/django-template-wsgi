@@ -1,1 +1,1 @@
-# django wsgi + tailwind + aplhinejs
+# Django template untuk aku pakai kembali

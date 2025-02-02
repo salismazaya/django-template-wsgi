@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os, pymysql, dj_database_url
+import os, dj_database_url
 
-pymysql.install_as_MySQLdb()
+try:
+    import pymysql
+    pymysql.install_as_MySQLdb()
+except ImportError:
+    pass
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = []
 
 if os.environ.get('ALLOWED_HOSTS'):
     ALLOWED_HOSTS.extend(os.environ.get('ALLOWED_HOSTS').split(','))
@@ -93,8 +97,10 @@ DATABASES = {
     }
 }
 
-if os.environ.get('DATABASES_URL'):
-    DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASES_URL'))
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -118,9 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'id-ID'
+LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'id-ID')
 
-TIME_ZONE = 'Asia/Jakarta'
+TIME_ZONE = os.environ.get('TIME_ZONE', 'Asia/Jakarta')
 
 USE_I18N = True
 
@@ -148,5 +154,5 @@ STATIC_ROOT = os.environ.get('STATIC_ROOT', BASE_DIR / 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PUBLIC_CONTEXT = {
-    'TITLE': 'Judul'
+    'TITLE': 'Django Kasep'
 }
