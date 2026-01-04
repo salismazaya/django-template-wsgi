@@ -1,7 +1,8 @@
-from django.http import HttpRequest
 from django.conf import settings
-from django.utils.crypto import get_random_string
+from django.http import HttpRequest
 from django.templatetags.static import static
+from django.utils.crypto import get_random_string
+
 
 def main(request: HttpRequest):
     return settings.PUBLIC_CONTEXT

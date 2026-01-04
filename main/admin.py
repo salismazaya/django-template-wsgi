@@ -1,6 +1,9 @@
 from django.contrib import admin
-from django.contrib.auth.models import User as AuthUser, Group as AuthGroup
-from django.contrib.auth.admin import UserAdmin as AuthUserAdmin, GroupAdmin as AuthGroupAdmin
+from django.contrib.auth.admin import GroupAdmin as AuthGroupAdmin
+from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
+from django.contrib.auth.models import Group as AuthGroup
+from django.contrib.auth.models import User as AuthUser
+
 
 class AdminSite(admin.AdminSite):
     pass
